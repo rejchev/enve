@@ -3,6 +3,14 @@
   <p align="center">An extended, too simple, zero-dependencies library to parse environment variables into structs</p>
 </p>
 
+<div align="center">
+
+  [![Test & Build](https://github.com/rejchev/enve/actions/workflows/build.yml/badge.svg)](https://github.com/rejchev/enve/actions/workflows/build.yml)
+  [![Go Reference](https://pkg.go.dev/badge/github.com/rejchev/enve.svg)](https://pkg.go.dev/github.com/rejchev/enve)
+  [![Go Report Card](https://goreportcard.com/badge/github.com/rejchev/enve)](https://goreportcard.com/report/github.com/rejchev/enve)
+  
+</div>
+
 ### About
 An extended, too simple, zero-dependencies library to parse environment variables into structs.\
 Library provides interfaces for implementing and using environment variable sources, allowing you to use multiple environment variable sources at once.\
