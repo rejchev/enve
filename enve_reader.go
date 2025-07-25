@@ -1,8 +1,8 @@
 package enve
 
 import (
-	"io"
 	"bufio"
+	"io"
 	"strings"
 )
 
@@ -13,7 +13,7 @@ type ReaderSource struct {
 }
 
 func NewReaderSource(ior io.Reader) *ReaderSource {
-	return &ReaderSource { ior: ior }
+	return &ReaderSource{ior: ior}
 }
 
 func (r *ReaderSource) GetEnvs() (map[string]string, error) {
@@ -32,7 +32,7 @@ func (r *ReaderSource) GetEnvs() (map[string]string, error) {
 					return nil, err
 				}
 			}
-			
+
 			if kv := strings.Split(l, "="); len(kv) == 2 {
 				m[kv[0]] = kv[1]
 			}

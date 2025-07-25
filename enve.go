@@ -1,9 +1,9 @@
 package enve
 
 import (
-	"maps"
 	"encoding/json"
 	"fmt"
+	"maps"
 )
 
 type IEnveSource interface {
@@ -12,7 +12,7 @@ type IEnveSource interface {
 
 func GetEnvs(i []IEnveSource) ([]byte, error) {
 	m := make(map[string]string)
-	
+
 	for _, env := range i {
 		switch n, err := env.GetEnvs(); {
 		case err != nil:
@@ -30,7 +30,7 @@ func Parse(v any, s ...IEnveSource) error {
 	if s == nil {
 		return fmt.Errorf("source must be present")
 	}
-	
+
 	switch b, err := GetEnvs(s); {
 	case err != nil:
 		return err
