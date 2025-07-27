@@ -14,6 +14,10 @@ func GetEnvs(i []IEnveSource) ([]byte, error) {
 	m := make(map[string]string)
 
 	for _, env := range i {
+		if env == nil {
+			continue;
+		}
+		
 		switch n, err := env.GetEnvs(); {
 		case err != nil:
 			continue
