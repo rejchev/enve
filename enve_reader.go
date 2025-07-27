@@ -10,10 +10,15 @@ var _ IEnveSource = (*ReaderSource)(nil)
 
 type ReaderSource struct {
 	ior io.Reader
+	d byte
 }
 
 func NewReaderSource(ior io.Reader) *ReaderSource {
-	return &ReaderSource{ior: ior}
+	return NewReaderSourceE(ior, '\n')
+}
+
+func NewReaderSourceE(ior io.Reader, delim byte) *ReaderSource {
+	return &ReaderSource{ior: ior, d: delim}
 }
 
 func (r *ReaderSource) GetEnvs() (map[string]string, error) {
@@ -25,7 +30,7 @@ func (r *ReaderSource) GetEnvs() (map[string]string, error) {
 		reader := bufio.NewReader(r.ior)
 
 		for {
-			if l, err = reader.ReadString('\n'); err != nil {
+			if l, err = reader.ReadString(r.d); err != nil {
 				if err == io.EOF {
 					break
 				} else {
