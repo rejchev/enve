@@ -33,6 +33,14 @@ func (r *ReaderSource) GetEnvs() (map[string]string, error) {
 				}
 			}
 
+			if l[len(l)-1] == '\n' {
+				drop := 1
+				if len(l) > 1 && l[len(l)-2] == '\r' {
+					drop = 2
+				}
+				l = l[:len(l)-drop]
+			}
+
 			if kv := strings.Split(l, "="); len(kv) == 2 {
 				m[kv[0]] = kv[1]
 			}
